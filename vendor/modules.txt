@@ -1,7 +1,9 @@
 # github.com/aceld/zinx v1.0.1
 ## explicit; go 1.13
-github.com/aceld/zinx/examples/zinx_server/zrouter
 github.com/aceld/zinx/utils
 github.com/aceld/zinx/ziface
 github.com/aceld/zinx/zlog
 github.com/aceld/zinx/znet
+# github.com/go-sql-driver/mysql v1.6.0
+## explicit; go 1.10
+github.com/go-sql-driver/mysql

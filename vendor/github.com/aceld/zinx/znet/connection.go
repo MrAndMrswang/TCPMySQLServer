@@ -12,7 +12,7 @@ import (
 	"github.com/aceld/zinx/ziface"
 )
 
-// Connection 链接
+//Connection 链接
 type Connection struct {
 	//当前Conn属于哪个Server
 	TCPServer ziface.IServer
@@ -39,7 +39,7 @@ type Connection struct {
 	isClosed bool
 }
 
-// NewConnection 创建连接的方法
+//NewConnection 创建连接的方法
 func NewConnection(server ziface.IServer, conn *net.TCPConn, connID uint32, msgHandler ziface.IMsgHandle) *Connection {
 	//初始化Conn属性
 	c := &Connection{
@@ -58,7 +58,7 @@ func NewConnection(server ziface.IServer, conn *net.TCPConn, connID uint32, msgH
 	return c
 }
 
-// StartWriter 写消息Goroutine， 用户将数据发送给客户端
+//StartWriter 写消息Goroutine， 用户将数据发送给客户端
 func (c *Connection) StartWriter() {
 	fmt.Println("[Writer Goroutine is running]")
 	defer fmt.Println(c.RemoteAddr().String(), "[conn Writer exit!]")
@@ -89,7 +89,7 @@ func (c *Connection) StartWriter() {
 	}
 }
 
-// StartReader 读消息Goroutine，用于从客户端中读取数据
+//StartReader 读消息Goroutine，用于从客户端中读取数据
 func (c *Connection) StartReader() {
 	fmt.Println("[Reader Goroutine is running]")
 	defer fmt.Println(c.RemoteAddr().String(), "[conn Reader exit!]")
@@ -145,7 +145,7 @@ func (c *Connection) StartReader() {
 	}
 }
 
-// Start 启动连接，让当前连接开始工作
+//Start 启动连接，让当前连接开始工作
 func (c *Connection) Start() {
 	c.ctx, c.cancel = context.WithCancel(context.Background())
 	//1 开启用户从客户端读取数据流程的Goroutine
@@ -162,27 +162,27 @@ func (c *Connection) Start() {
 	}
 }
 
-// Stop 停止连接，结束当前连接状态M
+//Stop 停止连接，结束当前连接状态M
 func (c *Connection) Stop() {
 	c.cancel()
 }
 
-// GetTCPConnection 从当前连接获取原始的socket TCPConn
+//GetTCPConnection 从当前连接获取原始的socket TCPConn
 func (c *Connection) GetTCPConnection() *net.TCPConn {
 	return c.Conn
 }
 
-// GetConnID 获取当前连接ID
+//GetConnID 获取当前连接ID
 func (c *Connection) GetConnID() uint32 {
 	return c.ConnID
 }
 
-// RemoteAddr 获取远程客户端地址信息
+//RemoteAddr 获取远程客户端地址信息
 func (c *Connection) RemoteAddr() net.Addr {
 	return c.Conn.RemoteAddr()
 }
 
-// SendMsg 直接将Message数据发送数据给远程的TCP客户端
+//SendMsg 直接将Message数据发送数据给远程的TCP客户端
 func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 	c.RLock()
 	defer c.RUnlock()
@@ -204,7 +204,7 @@ func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 	return nil
 }
 
-// SendBuffMsg  发生BuffMsg
+//SendBuffMsg  发生BuffMsg
 func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
 	c.RLock()
 	defer c.RUnlock()
@@ -226,7 +226,7 @@ func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
 	return nil
 }
 
-// SetProperty 设置链接属性
+//SetProperty 设置链接属性
 func (c *Connection) SetProperty(key string, value interface{}) {
 	c.propertyLock.Lock()
 	defer c.propertyLock.Unlock()
@@ -237,7 +237,7 @@ func (c *Connection) SetProperty(key string, value interface{}) {
 	c.property[key] = value
 }
 
-// GetProperty 获取链接属性
+//GetProperty 获取链接属性
 func (c *Connection) GetProperty(key string) (interface{}, error) {
 	c.propertyLock.Lock()
 	defer c.propertyLock.Unlock()
@@ -249,7 +249,7 @@ func (c *Connection) GetProperty(key string) (interface{}, error) {
 	return nil, errors.New("no property found")
 }
 
-// RemoveProperty 移除链接属性
+//RemoveProperty 移除链接属性
 func (c *Connection) RemoveProperty(key string) {
 	c.propertyLock.Lock()
 	defer c.propertyLock.Unlock()
@@ -257,7 +257,7 @@ func (c *Connection) RemoveProperty(key string) {
 	delete(c.property, key)
 }
 
-// 返回ctx，用于用户自定义的go程获取连接退出状态
+//返回ctx，用于用户自定义的go程获取连接退出状态
 func (c *Connection) Context() context.Context {
 	return c.ctx
 }
