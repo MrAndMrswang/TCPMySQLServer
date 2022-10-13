@@ -1,0 +1,82 @@
+{
+
+    "editor.tabSize": 4,
+
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true,
+    "go.addTags": {
+        "tags": "json",
+        "options": "",
+        "promptForTags": false,
+        "transform": "snakecase",
+        "template": ""
+    },
+    "go.formatTool": "gofmt",
+    "go.inferGopath": false,
+    "go.autocompleteUnimportedPackages": true,
+    "go.gocodePackageLookupMode": "go",
+    "go.gotoSymbol.includeImports": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.docsTool": "gogetdoc",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "json.schemaDownload.enable": false,
+
+    "workbench.activityBar.iconClickBehavior": "focus",
+    "activitusbar.views": [
+        {
+            "name": "settings",
+            "codicon": "gear"
+        },
+        {
+            "name": "explorer",
+            "codicon": "explorer-view-icon"
+        },
+        {
+            "name": "search",
+            "codicon": "search-view-icon"
+        },
+        {
+            "name": "scm",
+            "codicon": "source-control-view-icon"
+        },
+        {
+            "name": "debug",
+            "codicon": "run-view-icon"
+        },
+        {
+            "name": "command.workbench.view.extension.test",
+            "codicon": "test-view-icon",
+            "tooltip": "Test"
+        },
+        {
+            "name": "extensions",
+            "codicon": "extensions-view-icon"
+        },
+        {
+            "name": "command.workbench.view.extension.todo-tree-container",
+            "codicon": "book",
+            "tooltip": "Todo Tree"
+         },
+        {
+            "name": "command.workbench.view.extension.leetcode",
+            "codicon": "rocket",
+            "tooltip": "LeetCode"
+        },
+        {
+            "name": "terminal",
+            "codicon": "terminal-powershell"
+        }
+    ],
+    "leetcode.endpoint": "leetcode-cn",
+    //"leetcode.workspaceFolder": "/xxxx", //算法项目目录
+    "leetcode.defaultLanguage": "golang",
+    "files.trimTrailingWhitespace": true,
+    "explorer.confirmDelete": false,
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "go.useLanguageServer": true
+}
