@@ -8,6 +8,7 @@ package main
 import (
 	"time"
 
+	"TCPMySQLServer/util"
 	router "TCPMySQLServer/zrouter"
 
 	"github.com/aceld/zinx/ziface"
@@ -41,6 +42,9 @@ func DoConnectionLost(conn ziface.IConnection) {
 }
 
 func main() {
+	// init util
+	util.Init()
+
 	//创建一个server句柄
 	s := znet.NewServer()
 
@@ -50,6 +54,7 @@ func main() {
 
 	//配置路由
 	s.AddRouter(0, &router.Ping{})
+	s.AddRouter(1, &router.Business{})
 
 	//开启服务
 	s.Serve()

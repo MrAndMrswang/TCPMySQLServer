@@ -1,0 +1,9 @@
+{
+    "BookStoreDB" : {
+        "Host": "localhost",
+        "Port": "3306",
+        "User": "TCPMySQLServer",
+        "Password": "20221111",
+        "DBName": "BookStore"
+    }
+}
