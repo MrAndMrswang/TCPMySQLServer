@@ -7,18 +7,16 @@ import (
 )
 
 // ping test 自定义路由
-type PingRouter struct {
+type Ping struct {
 	znet.BaseRouter
 }
 
 // Ping Handle
-func (this *PingRouter) Handle(request ziface.IRequest) {
-
+func (this *Ping) Handle(request ziface.IRequest) {
 	zlog.Debug("Call PingRouter Handle")
-	//先读取客户端的数据，再回写ping...ping...ping
 	zlog.Debug("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
 
-	err := request.GetConnection().SendBuffMsg(0, []byte("This is Ping Handle From Server!!!"))
+	err := request.GetConnection().SendBuffMsg(0, []byte("Hello! This is Ping From Server!!!"))
 	if err != nil {
 		zlog.Error(err)
 	}
