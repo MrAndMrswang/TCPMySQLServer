@@ -13,7 +13,7 @@ type Ping struct {
 
 // Ping Handle
 func (this *Ping) Handle(request ziface.IRequest) {
-	zlog.Debug("Call PingRouter Handle")
+	zlog.Debug("Call Ping Handle")
 	zlog.Debug("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
 
 	err := request.GetConnection().SendBuffMsg(0, []byte("Hello! This is Ping From Server!!!"))
