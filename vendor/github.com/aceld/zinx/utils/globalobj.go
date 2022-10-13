@@ -1,7 +1,8 @@
 // Package utils 提供zinx相关工具类函数
 // 包括:
-//		全局配置
-//		配置文件加载
+//
+//	全局配置
+//	配置文件加载
 //
 // 当前文件描述:
 // @Title  globalobj.go
@@ -19,8 +20,8 @@ import (
 )
 
 /*
-	存储一切有关Zinx框架的全局参数，供其他模块使用
-	一些参数也可以通过 用户根据 zinx.json来配置
+存储一切有关Zinx框架的全局参数，供其他模块使用
+一些参数也可以通过 用户根据 zinx.json来配置
 */
 type GlobalObj struct {
 	/*
@@ -55,11 +56,11 @@ type GlobalObj struct {
 }
 
 /*
-	定义一个全局的对象
+定义一个全局的对象
 */
 var GlobalObject *GlobalObj
 
-//PathExists 判断一个文件是否存在
+// PathExists 判断一个文件是否存在
 func PathExists(path string) (bool, error) {
 	_, err := os.Stat(path)
 	if err == nil {
@@ -71,7 +72,7 @@ func PathExists(path string) (bool, error) {
 	return false, err
 }
 
-//Reload 读取用户的配置文件
+// Reload 读取用户的配置文件
 func (g *GlobalObj) Reload() {
 
 	if confFileExists, _ := PathExists(g.ConfFilePath); confFileExists != true {
@@ -99,7 +100,7 @@ func (g *GlobalObj) Reload() {
 }
 
 /*
-	提供init方法，默认加载
+提供init方法，默认加载
 */
 func init() {
 	pwd, err := os.Getwd()
